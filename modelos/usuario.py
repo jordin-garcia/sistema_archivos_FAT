@@ -4,7 +4,7 @@ import hashlib
 class Usuario:
     def __init__(self, nombre_usuario, password, es_admin=False):
         self.nombre_usuario = nombre_usuario
-        self.password_hash = self.hash_password(password)
+        self.password_hash = self._hashear_password(password)
         self.es_admin = es_admin
 
     def _hashear_password(self, password):

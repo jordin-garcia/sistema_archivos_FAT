@@ -1,7 +1,7 @@
 class BloqueDatos:
-    def __init__(self, datos="", siguiente_archivo=None, eof=False):
+    def __init__(self, datos="", siguiente_bloque=None, eof=False):
         self.datos = datos
-        self.siguiente_archivo = siguiente_archivo
+        self.siguiente_bloque = siguiente_bloque
         self.eof = eof
 
     def to_dict(self):
@@ -16,7 +16,7 @@ class BloqueDatos:
         return cls(
             datos=data.get("datos", ""),
             siguiente_bloque=data.get("siguiente_bloque"),
-            eof=data.get("efo", False),
+            eof=data.get("eof", False),
         )
 
     def __repr__(self):

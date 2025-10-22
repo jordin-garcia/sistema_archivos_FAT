@@ -1,0 +1,12 @@
+[
+  {
+    "nombre_usuario": "admin",
+    "password_hash": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+    "es_admin": true
+  },
+  {
+    "nombre_usuario": "jordin",
+    "password_hash": "dea0531e9b0196d032c28a7bd3c14ef7bf5000213b2be4704278794e6e27e4f4",
+    "es_admin": false
+  }
+]

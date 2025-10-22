@@ -1,6 +1,3 @@
-from modelos import ArchivoFAT, Usuario
-
-
 class GestorPermisos:
     def tiene_permiso_lectura(self, archivo_fat, usuario):
         # El propietario siempre tiene acceso completo
@@ -60,7 +57,7 @@ class GestorPermisos:
             archivo_fat.propietario != usuario_actual.nombre_usuario
             and not usuario_actual.es_admin
         ):
-            return False, "Solo el propietario o administrador pueden revocar permisos"
+            return False, "Solo el propietario o administrador puede revocar permisos"
 
         # No permitir revocar permisos al mismo propietario
         if usuario_destino == archivo_fat.propietario:

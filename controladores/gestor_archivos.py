@@ -1,7 +1,6 @@
 import os
 import shutil
 from datetime import datetime
-from tkinter import N
 from modelos import ArchivoFAT, BloqueDatos
 from utilidades import Serializador
 
@@ -63,19 +62,19 @@ class GestorArchivos:
             ruta_bloque = os.path.join(carpeta_archivo, f"bloque_{idx + 1}.json")
             self.serializador.guardar_json(ruta_bloque, bloque.to_dict())
 
-            # Crear entrada en tabla FAT
-            ruta_inicial = os.path.join(carpeta_archivo, "bloque_1.json")
-            archivo_fat = ArchivoFAT(
-                nombre_archivo=nombre_archivo,
-                ruta_datos_inicial=ruta_inicial,
-                cantidad_caracteres=len(contenido),
-                propietario=propietario,
-            )
+        # Crear entrada en tabla FAT
+        ruta_inicial = os.path.join(carpeta_archivo, "bloque_1.json")
+        archivo_fat = ArchivoFAT(
+            nombre_archivo=nombre_archivo,
+            ruta_datos_inicial=ruta_inicial,
+            cantidad_caracteres=len(contenido),
+            propietario=propietario,
+        )
 
-            archivos.append(archivo_fat)
-            self.guardar_tabla_fat(archivos)
+        archivos.append(archivo_fat)
+        self.guardar_tabla_fat(archivos)
 
-            return True, f"Archivo '{nombre_archivo}' creado exitosamente."
+        return True, f"Archivo '{nombre_archivo}' creado exitosamente."
 
     def listar_archivos(self, incluir_papelera=False):
         archivos = self.cargar_tabla_fat()
@@ -169,7 +168,7 @@ class GestorArchivos:
 
         # Actualizar metadatos en tabla FAT
         archivo_fat.cantidad_caracteres = len(nuevo_contenido)
-        archivo_fat.fecha_modificacion = datetime.now().isoformat()
+        archivo_fat.fecha_modificacion = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
         archivos[idx_archivo] = archivo_fat
         self.guardar_tabla_fat(archivos)
@@ -190,7 +189,7 @@ class GestorArchivos:
 
         # Marcar como "en papelera"
         archivo_fat.en_papelera = True
-        archivo_fat.fecha_eliminacion = datetime.now().isoformat()
+        archivo_fat.fecha_eliminacion = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
 
         self.guardar_tabla_fat(archivos)
 
@@ -216,7 +215,7 @@ class GestorArchivos:
 
         return True, f"Archivo '{nombre_archivo}' recuperado exitosamente."
 
-    def eliminar_permanentemente(self, nombre_archivo):
+    def eliminar_permanente(self, nombre_archivo):
         archivos = self.cargar_tabla_fat()
         archivo_fat = None
         idx_archivo = -1

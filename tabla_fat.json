@@ -1,0 +1,18 @@
+[
+  {
+    "nombre_archivo": "prueba",
+    "ruta_datos_inicial": "datos\\prueba\\bloque_1.json",
+    "en_papelera": false,
+    "cantidad_caracteres": 80,
+    "fecha_creacion": "22-10-2025 01:18:48",
+    "fecha_modificacion": "22-10-2025 01:21:00",
+    "fecha_eliminacion": null,
+    "propietario": "admin",
+    "permisos": {
+      "jordin": {
+        "lectura": true,
+        "escritura": false
+      }
+    }
+  }
+]

@@ -18,8 +18,12 @@ class ArchivoFAT:
         self.ruta_datos_inicial = ruta_datos_inicial
         self.en_papelera = en_papelera
         self.cantidad_caracteres = cantidad_caracteres
-        self.fecha_creacion = fecha_creacion or datetime.now().isoformat()
-        self.fecha_modificacion = fecha_modificacion or datetime.now().isoformat()
+        self.fecha_creacion = fecha_creacion or datetime.now().strftime(
+            "%d-%m-%Y %H:%M:%S"
+        )
+        self.fecha_modificacion = fecha_modificacion or datetime.now().strftime(
+            "%d-%m-%Y %H:%M:%S"
+        )
         self.fecha_eliminacion = fecha_eliminacion
         self.propietario = propietario
         self.permisos = permisos if permisos is not None else {}

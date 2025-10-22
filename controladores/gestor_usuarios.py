@@ -8,7 +8,7 @@ class GestorUsuarios:
         self.serializador = Serializador()
 
     def cargar_usuarios(self):
-        datos = self.serializador.cargar_json(self.ruta_usuaios)
+        datos = self.serializador.cargar_json(self.ruta_usuarios)
         if datos is None:
             return []
         return [Usuario.from_dict(d) for d in datos]
